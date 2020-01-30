@@ -10,6 +10,7 @@ class CityScreen extends StatefulWidget {
 class _CityScreenState extends State<CityScreen> {
   @override
   Widget build(BuildContext context) {
+    String cityName;
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -25,7 +26,9 @@ class _CityScreenState extends State<CityScreen> {
               Align(
                 alignment: Alignment.topLeft,
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: Icon(
                     Icons.arrow_back_ios,
                     size: 50.0,
@@ -34,10 +37,35 @@ class _CityScreenState extends State<CityScreen> {
               ),
               Container(
                 padding: EdgeInsets.all(20.0),
-                child: null,
+                child: TextField(
+                  
+                  style:kTextFieldInputDecoration,
+                  enableSuggestions: false,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                      borderSide: BorderSide.none
+                    ),
+                    icon: Icon(
+                      Icons.location_city,
+                      color: Colors.white,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    hintText: 'City Name',
+                    hintStyle: kTextFieldInputDecoration,
+                  ),
+                  onChanged: (value){
+                    cityName= value;
+                  },
+                ),
               ),
               FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context,cityName);
+                },
                 child: Text(
                   'Get Weather',
                   style: kButtonTextStyle,
