@@ -1,7 +1,5 @@
 import 'location.dart';
 import 'networking.dart';
-import 'package:flutter/material.dart';
-import 'package:clima/screens/location_screen.dart';
 
 const kAPIKey = '0348fb9938108b7c9bbcd197e91bc203';
 const kOpenWeatherURL = 'https://api.openweathermap.org/data/2.5/weather';

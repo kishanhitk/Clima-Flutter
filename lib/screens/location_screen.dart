@@ -1,5 +1,4 @@
 import 'package:clima/screens/city_screen.dart';
-import 'package:clima/screens/loading_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:clima/utilities/constants.dart';
 import 'package:clima/services/weather.dart';
@@ -24,24 +23,26 @@ class _LocationScreenState extends State<LocationScreen> {
   }
 
   void updateUI(dynamic weatherinfo) {
-    setState(() {
-      if (weatherinfo == null) {
-        temperature = 0;
-        weathertext = 'Oops! You fucked up.';
-        cityname = '';
-        weathericon = 'ERROR';
-        return;
-      } else {
-        double temp = weatherinfo['main']['temp'] - 273.15;
-        var condition = weatherinfo['weather'][0]['id'];
-        weathericon = weatherModel.getWeatherIcon(condition);
+    setState(
+      () {
+        if (weatherinfo == null) {
+          temperature = 0;
+          weathertext = 'Oops! You fucked up.';
+          cityname = '';
+          weathericon = 'ERROR';
+          return;
+        } else {
+          double temp = weatherinfo['main']['temp'] - 273.15;
+          var condition = weatherinfo['weather'][0]['id'];
+          weathericon = weatherModel.getWeatherIcon(condition);
 
-        temperature = temp.toInt();
-        weathertext = weatherModel.getMessage(temperature);
-        cityname = weatherinfo['name'];
-        print(cityname);
-      }
-    });
+          temperature = temp.toInt();
+          weathertext = weatherModel.getMessage(temperature);
+          cityname = weatherinfo['name'];
+          print(cityname);
+        }
+      },
+    );
   }
 
   @override
